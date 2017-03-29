@@ -31,6 +31,8 @@ rm -rf "${CARDANO_DOCS_REPO}"
 git clone --quiet --branch=master \
     https://"${GITHUB_CARDANO_DOCS_ACCESS}"@github.com/input-output-hk/cardano-docs.iohk.io \
     "${CARDANO_DOCS_REPO}"
+cd "${CARDANO_DOCS_REPO}"
+git pull --quiet origin master
 
 echo "**** 4. Copy (probably new) version of docs ****"
 mv "${WALLET_API_HTML}" "${CARDANO_DOCS_REPO}"/"${WALLET_API_ROOT}"/
