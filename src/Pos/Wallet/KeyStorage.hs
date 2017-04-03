@@ -55,6 +55,8 @@ import           Pos.Util.UserSecret         (UserSecret, peekUserSecret, usKeys
 import           Pos.Wallet.Context          (WithWalletContext)
 import           Pos.Wallet.State.State      (MonadWalletDB)
 
+import           System.Wlog                 (WithLogger)
+
 type KeyData = STM.TVar UserSecret
 
 ----------------------------------------------------------------------
@@ -164,7 +166,7 @@ instance ( Mockable d m
          ) => Mockable d (KeyStorage m) where
     liftMockable = liftMockableWrappedM
 
-runKeyStorage :: (MonadIO m, MonadThrow m) => FilePath -> KeyStorage m a -> m a
+runKeyStorage :: (MonadIO m, WithLogger m) => FilePath -> KeyStorage m a -> m a
 runKeyStorage fp ks =
     peekUserSecret fp >>= liftIO . STM.newTVarIO >>= runKeyStorageRaw ks
 
