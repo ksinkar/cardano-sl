@@ -28,7 +28,7 @@ import           Mockable                    (ChannelT, Counter, Distribution, G
                                               SharedAtomicT, SharedExclusiveT, ThreadId,
                                               liftMockableWrappedM)
 import           Serokell.Util.Lens          (WrappedM (..))
-import           System.Wlog                 (CanLog, HasLoggerName)
+import           System.Wlog                 (CanLog, HasLoggerName, WithLogger)
 import           Universum
 
 import           Pos.Binary.Crypto           ()
@@ -54,8 +54,6 @@ import           Pos.Util.UserSecret         (UserSecret, peekUserSecret, usKeys
                                               usPrimKey, writeUserSecret)
 import           Pos.Wallet.Context          (WithWalletContext)
 import           Pos.Wallet.State.State      (MonadWalletDB)
-
-import           System.Wlog                 (WithLogger)
 
 type KeyData = STM.TVar UserSecret
 

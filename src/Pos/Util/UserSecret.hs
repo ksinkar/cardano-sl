@@ -55,6 +55,8 @@ import qualified System.Posix.Types   as PSX (FileMode)
 import           System.Wlog          (logWarning)
 #endif
 
+{-# ANN module ("HLint: ignore Use fewer imports" :: Text) #-}
+
 -- | User secret data. Includes secret keys only for now (not
 -- including auxiliary @_usPath@).
 data UserSecret = UserSecret
